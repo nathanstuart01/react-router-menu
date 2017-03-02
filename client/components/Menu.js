@@ -16,11 +16,26 @@ class Menu extends React.Component {
     });
   }
 
+  deleteMenuItem = (menu_id ,id) => {
+    $.ajax({
+      url: `/api/menus/${menu_id}/menu_items/${id}`,
+      type: 'DELETE',
+      dataType: 'JSON'
+    }).done( data => {
+      let menu_items = this.state.menu_items.filter( menu_item => { return menu_item.id !== id });
+      this.setState({ menu_items });
+    }).fail( data => {
+      console.log(data);
+    })
+  }
+
+
   displayMenuItems = () => {
     return this.state.menu_items.map( menu_item => {
       let id = `collapse${menu_item.id}`;
+
       return(
-        <div className="panel panel-default">
+        <div className="panel panel-default" key={menu_item.id}>
           <div className="panel-heading">
             <h4 className="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href={`#${id}`}>
@@ -33,8 +48,10 @@ class Menu extends React.Component {
               { menu_item.description }
               <hr />
               <i>Price: ${ Math.round(menu_item.price) }</i>
-              <button className='btn btn-warning'>Edit</button>
-              <button className='btn btn-danger'>Delete</button>
+              <button className='btn btn-warning'>
+              Edit
+              </button>
+              <button className='btn btn-danger' onClick= { () => this.deleteMenuItem(menu_item.menu_id, menu_item.id) }>Delete</button>
             </div>
           </div>
         </div>

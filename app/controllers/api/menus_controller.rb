@@ -14,7 +14,7 @@ before_action :set_menu, except: [:index, :create]
     if @menu.save
       render json: @menu
     else
-      render json: { errors: @menu.erros }, status: 401
+      render json: { errors: @menu.errors }, status: 401
     end
   end
 
