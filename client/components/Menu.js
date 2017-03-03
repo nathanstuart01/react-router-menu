@@ -1,4 +1,5 @@
 import React from 'react';
+import MenuEdit from './MenuEdit';
 import { Link } from 'react-router';
 
 class Menu extends React.Component {
@@ -31,35 +32,13 @@ class Menu extends React.Component {
 
 
   displayMenuItems = () => {
-    return this.state.menu_items.map( menu_item => {
-      let id = `collapse${menu_item.id}`;
-
-      return(
-        <div className="panel panel-default" key={menu_item.id}>
-          <div className="panel-heading">
-            <h4 className="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href={`#${id}`}>
-                { menu_item.name }
-              </a>
-            </h4>
-          </div>
-          <div id={id} className="panel-collapse collapse in" role="tabpanel">
-            <div className="panel-body">
-              { menu_item.description }
-              <hr />
-              <i>Price: ${ Math.round(menu_item.price) }</i>
-              <button className='btn btn-warning'>
-              Edit
-              </button>
-              <button className='btn btn-danger' onClick= { () => this.deleteMenuItem(menu_item.menu_id, menu_item.id) }>Delete</button>
-            </div>
-          </div>
-        </div>
-      );
+     return this.state.menu_items.map( menu_item => {
+      return(<MenuEdit key={menu_item.id} menu_item={menu_item} deleteMenuItem={this.deleteMenuItem} menu_id={this.props.params.id} menu={this.state.menu}/>);
     });
   }
 
   render() {
+    //2 different views editing and display
     return(
       <div>
         <h1>{this.state.menu.name}</h1>

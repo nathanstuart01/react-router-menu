@@ -21,7 +21,7 @@ class Api::MenuItemsController < ApplicationController
   end
 
   def update
-    if @menu_item.update(menu_params)
+    if @menu_item.update(menu_item_params)
       render json: @menu_item
     else
       render json: { errors: @menu_item.errors }, status: 401
