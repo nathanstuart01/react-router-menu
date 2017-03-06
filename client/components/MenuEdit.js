@@ -64,7 +64,7 @@ class MenuEdit extends React.Component{
               Edit
               </button>
               <button className='btn btn-danger'
-              onClick= { () => this.deleteMenuItem(menu_item.menu_id, menu_item.id) }
+              onClick= { () => this.props.deleteMenuItem(menu_item.menu_id, menu_item.id) }
               >
               Delete
               </button>

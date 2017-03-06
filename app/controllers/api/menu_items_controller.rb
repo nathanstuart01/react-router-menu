@@ -12,7 +12,7 @@ class Api::MenuItemsController < ApplicationController
   end
 
   def create
-    @menu_item = Menu_item.create(menu_item_params)
+    @menu_item = @menu.menu_items.create(menu_item_params)
     if @menu_item.save
       render json: @menu_item
     else
