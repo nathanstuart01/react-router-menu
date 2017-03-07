@@ -14,7 +14,7 @@ class MenuEdit extends React.Component{
       url: `/api/menus/${this.props.menu_id}/menu_items/${this.state.menu_item.id}`,
       type: 'PUT',
       dataType: 'JSON',
-      data: { menu_item: {name: this.refs.name.value } }
+      data: { menu_item: {name: this.refs.name.value, description: this.refs.description.value, price: this.refs.price.value} }
     }).done( menu_item => {
       this.setState({ editing: false, menu_item });
     }).fail( data => {
@@ -31,9 +31,9 @@ class MenuEdit extends React.Component{
         <h1>Editing: { menu_item.name }</h1>
         <input ref='name' type='text' defaultValue={ this.state.menu_item.name } required />
         <br />
-        <input type='text' defaultValue={ this.state.menu_item.description } required />
+        <input ref='description' type='text' defaultValue={ this.state.menu_item.description } required />
         <br />
-        <input type='text' defaultValue={ this.state.menu_item.price } required />
+        <input ref='price' type='text' defaultValue={ this.state.menu_item.price } required />
         <br />
         <input type='submit' className='btn btn-primary' />
         <button
