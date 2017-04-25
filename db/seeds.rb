@@ -1,21 +1,9 @@
-b = Menu.create(name: 'Breakfast')
-l = Menu.create(name: 'Lunch')
-d = Menu.create(name: 'Dinner')
-ln = Menu.create(name: 'Late Night')
-
-def add_menu_items(menu)
-  10.times do
-    menu.menu_items.create(
-    name: Faker::Beer.style,
-    description: Faker::Hipster.paragraph,
-    price: Faker::Number.between(5.50, 100.75)
-    )
-  end
-end
-
-add_menu_items(b)
-add_menu_items(l)
-add_menu_items(d)
-add_menu_items(ln)
+MenuItem.create([
+{name: 'Potato Pizza', description: 'A wood fired pizza with sauteed onions, garlic, and potatoes', price: '13.00', menu_id: '1'},
+{name: 'Greek Pizza', description: 'Loaded with feta, kalamata olives, sundried tomatoes, and red onions', price: '14.00', menu_id: '1'},
+{name: 'Hawaiian Pizza', description: 'Topped with pineapple, canadian bacon, and olives', price: '16.00', menu_id: '1'},
+{name: 'Cajun Pizza', description: 'Andouille sausage, green peppers, and onions', price: '15.00', menu_id: '1'},
+{name: 'Veggie Pizza', description: 'The whole garden: tomatoes, pesto, basil, onions, black olives, garlic, potatoes, and green peppers', price: '16.00', menu_id: '1'}
+])
 
 puts 'Menus Seeded'

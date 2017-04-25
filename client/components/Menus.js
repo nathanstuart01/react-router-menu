@@ -53,7 +53,7 @@ class Menus extends React.Component {
   render() {
     return(
       <div>
-        <h3>Pizza && Beer''s Menu </h3>
+        <h3>Mountain View Pizza Menus</h3>
         <form ref='addForm' onSubmit={this.addMenu}>
         <input type='text' required placeholder='Menu Name' ref='name' />
         <input type='submit' className='btn btn-primary' value='Add Menu' />
